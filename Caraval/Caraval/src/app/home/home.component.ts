@@ -8,6 +8,7 @@ import { AgentService } from '../Services/agent.service';
 })
 export class HomeComponent implements OnInit {
   isRegistered: boolean = false;
+  searchData: any[] = [];
   constructor(private agentService: AgentService) { }
 
   ngOnInit(): void {
@@ -21,5 +22,14 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  fetchResults(){
+    console.log("SOmething happened?");
+    var a = (<HTMLInputElement>document.getElementById("searchField")).value;
+    var b = parseInt((<HTMLSelectElement>document.getElementById("searchBy")).value);
+    this.agentService.getSearchResult(a, b).subscribe((data) => {
+      console.log(data);
+      this.searchData = data.data;
+    });
+  }
 
 }

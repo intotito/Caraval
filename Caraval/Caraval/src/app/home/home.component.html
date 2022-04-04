@@ -16,7 +16,7 @@
           
           <div class="navbar-nav ms-auto">  
                  <a class="nav-link" href="CART.html">
-             <img src="https://img.favpng.com/20/2/0/shopping-cart-symbol-computer-icons-supermarket-png-favpng-32UnStD0yjpjnHizivbrD6P1P.jpg" alt="" width="30" height="24"></a>
+             <img src="assets/img/user.png" alt="" width="30" height="24"></a>
               </div>
   
       </div>
@@ -31,4 +31,177 @@
   <br>
   
   <!--End of Navigation Bar(EL)-->
+
+  <!--Carousel(EL)-->
+<div id="carouselCaptions" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+  <button type="button" data-bs-target="#carouselCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+  <button type="button" data-bs-target="#carouselCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+  <button type="button" data-bs-target="#carouselCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+</div>
+
+<div class="carousel-inner">
+  <div class="carousel-item active" data-bs-interval="8000">
+    <img src="https://images.squarespace-cdn.com/content/v1/59af79dc9f8dced29f51b30e/1559801395919-BHRLIXPDP4UMNZ5XOQMA/ed5daf8d-66be-4c90-804f-b5a38ae3a0e8_handyman.jpg?format=1500w" class="d-block w-100 h-100" alt="...">
+    <div class="carousel-caption d-none d-md-block">
+      <h5 style="color:black;"> trustworthy and reliable </h5>
+      <p style="color:black;">look at our customer appproved reviews</p>
+    </div>
+  </div>
+  <div class="carousel-item" data-bs-interval="8000">
+    <img src="https://www.homee.com/hubfs/types-of-handyman-services.jpeg" class="d-block w-100 h-100" alt="...">
+    <div class="carousel-caption d-none d-md-block">
+      <h5 style="color:black;">Location, location, location</h5>
+      <p style="color:black;">Find handymen in your area</p>
+    </div>
+  </div>
+  <div class="carousel-item" data-bs-interval="8000">
+    <img src="https://thumbs.dreamstime.com/b/handyman-tool-belt-house-renovation-service-35580219.jpg" class="d-block w-100" alt="...">
+    <div class="carousel-caption d-none d-md-block">
+      <h5>Fully Qualified </h5>
+      <p>Ready at anytime, anywhere</p>
+    </div>
+  </div>
+</div>
+<!--Arrows allow user to navigate Carousel(EL)-->
+<button class="carousel-control-prev" type="button" data-bs-target="#carouselCaptions" data-bs-slide="prev">
+  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+  <span class="visually-hidden">Previous</span>
+</button>
+<button class="carousel-control-next" type="button" data-bs-target="#carouselCaptions" data-bs-slide="next">
+  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+  <span class="visually-hidden">Next</span>
+</button>
+</div>
+<!--End of Carousel(EL)-->
+<br>
+<br>
+<br>
+
+<div class="input-group">
+<input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" id="searchField"/>
+<button type="button" class="btn btn-outline-primary" (click)="fetchResults()">Search by</button>
+<select id="searchBy">
+  <option value="0">Name</option>
+  <option value="1">Skill</option>
+  <option value="2">Location</option>
+</select>
+</div>
+
+<br>
+<br>
+
+<table id="myTable" class="table">
+<tr class="header">
+  <th style="width:25%;">Name</th>
+  <th style="width:25%;">Country</th>
+<th style="width:25%;">job</th>
+  <th style="width:25%;">rating</th>
+</tr>
+<tr *ngFor="let row of searchData">
+  <td>{{row.Name}}</td>
+  <td>{{row.address}}</td>
+  <td>{{row.skill}}</td>
+  <td>{{row.status}}</td>
+</tr>
+</table>
+
+
+
+
+<script>
+function myFunction() {
+// Declare variables
+var input, filter, table, tr, td, i, txtValue;
+input = document.getElementById("myInput");
+filter = input.value.toUpperCase();
+table = document.getElementById("myTable");
+tr = table.getElementsByTagName("tr");
+
+// Loop through all table rows, and hide those who don't match the search query
+for (i = 0; i < tr.length; i++) {
+  td = tr[i].getElementsByTagName("td")[0];
+  if (td) {
+    txtValue = td.textContent || td.innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      tr[i].style.display = "";
+    } else {
+      tr[i].style.display = "none";
+    }
+  }
+}
+}
+</script>
+
+  <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+<h3>More than life</h3>
+<p>As industry leaders in refurbishing and supplying secondary mobile devices, we understand that unfulfilled promises hurt your bottom line—and your peace of mind.</p>
+
+<p>For 20 years, we’ve been committed to solving that problem for growth-minded business owners like you.</p>
+<p> From our fast, global distribution to competitive pricing to an expert customer service team ready to answer your questions day or night, we’re not just your supplier: we’re an extension of your team.</p>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+<h2>About us </h2>
+<p>we are a hand selected team of four, working for a brighter future and a good grade :)</p>
+
+<p>we are constantly iterating,
+solving problems and working together to connect people all over the world.</p>
+
+<p>That’s why it’s important that our workforce reflects the diversity of the people we serve.
+Hiring people with different backgrounds and points of view helps us make better decisions,
+build better products and create better experiences for everyone.</p>
+
+<br>
+<br>
+<br>
+
+<h2>Contact </h2>
+<p>
+<p>click here to be sent to our call 24/7 centre for help</p>
+<a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+  <img border="0" alt="Apple Logo" src="https://static.vecteezy.com/system/resources/previews/002/079/984/large_2x/phone-icon-flat-style-isolated-on-grey-background-telephone-symbol-call-illustration-sign-for-web-and-mobile-app-free-vector.jpg" width="100" height="100">
+  </a>
+
+<br>
+<br>
+
+<h2>Location </h2>
+<p> GMIT Galway Campus 
+<p>Galway
+<p>Dublin Road
+  <p>H91 T8NW</p>
+
+<br>
+<br>
+
+<p>
+  <a href="https://www.apple.com/ie/">
+  <img border="0" alt="Apple Logo" src="https://upload.wikimedia.org/wikipedia/commons/8/84/Apple_Computer_Logo_rainbow.svg" width="100" height="100">
+  </a>
+
+  <a href="https://www.samsung.com/ie/">
+  <img border="0" alt="Samsung Logo" src="https://i.pinimg.com/originals/1d/35/83/1d35833251dec0ad373ad7cbbbf4f3e2.png" width="100" height="100">
+  </a>
+
+</p>
+
+<br>
+<br>
+<br>
   
