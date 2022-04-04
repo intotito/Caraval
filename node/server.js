@@ -67,12 +67,49 @@ app.post("/login", (req, res) => {
     });
     console.log("Request body : " + req.body.password + "\n" + query);
    //res.send("<h2>" + req.body + "godigod</h2>");
+}); 
+app.get("/search:uid/:cat", (req, res)=>{
+    console.log("Just checking");
+    console.log(req.params);
+    console.log(req.params.uid);
+    let query = "";
+    if(req.params.cat.substring(1,) == 0){
+        query = `SELECT CONCAT(first_name, " ", last_name) AS Name, address, skill,
+        status FROM Handyman WHERE (last_name LIKE '%${req.params.uid.substring(1,)}%' || first_name LIKE '%${req.params.uid.substring(1,)}%')`;
+    } else if(req.params.cat.substring(1,) == 1){
+        query = `SELECT CONCAT(first_name, " ", last_name) AS Name, address, skill,
+        status FROM Handyman WHERE skill LIKE '%${req.params.uid.substring(1,)}%'`;
+    }else if(req.params.cat.substring(1,) == 2){
+        query = `SELECT CONCAT(first_name, " ", last_name) AS Name, address, skill,
+        status FROM Handyman WHERE address LIKE '%${req.params.uid.substring(1,)}%'`;
+    }
+    console.log(query);
+    db.query(query, 
+             (err, data)=>{
+                 if(err){
+                     console.log("SQL error: " + err.message);
+                     res.json({
+                         status: 0,
+                         length: 0,
+                         data: [{message: "Error occured Sorry!!"}]
+                     });
+                 } else{
+                     console.log(data);
+                     res.json({
+                        status: 1,
+                        length: data?.length,
+                        data: data
+                    });
+                 }
+             });
+    
 });
 app.post("/register", (req, res) => {
-    db.quest("INSERT INTO USERS")
+    db.query("INSERT INTO USERS")
 });
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, ()=> console.log(`server running on port ${PORT}`));
+
 //app.use(express.static('public'));
 
 //db.sequelize.sync();
