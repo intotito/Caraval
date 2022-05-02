@@ -21,4 +21,9 @@ export class AgentService {
   getSearchResult(searchString: string, searchBy: number) : Observable<any>{
     return this.httpClient.get('http://localhost:8080/search:'+searchString+"/:" + searchBy);
   }
+
+  postRegistrationInfo(data:any): Observable<any>{
+    console.log("Service working ");
+    return this.httpClient.post('http://localhost:8080/register', data);
+  }
 }

@@ -34,11 +34,43 @@ app.get("/home", (req, res) => {
     res.set('Access-Control-Allow-Origin', 'http://localhost:4200');
     res.send("<h2>Nawa for WAEC</h2>");
 });
+app.post("/register", (req, res) => {
+    query = `SELECT user_id FROM USERS WHERE user_id = '${req.body.userid}'`;
+    query1 = `INSERT INTO USERS VALUES ('${req.body.userid}' , '${req.body.password}', 
+                '${req.body.fName}', '${req.body.lName}', '${req.body.address}')`;
+    console.log("Register called\n" + query);
+    db.query(query, (err, data)=>{
+        console.log(data);
+        if(data?.length > 0){
+            console.log("Duplicate looming");
+            res.json({
+                status: 0,
+                length: 0,
+                data:[{message: "User Already Exist"}]
+            });
+        } else{
+            console.log(query1);
+            db.query(query1, (err, data)=>{
+                console.log(data);
+                console.log(err);
+                res.json({
+                    status: 1,
+                    length: 0,
+                    data:[{message: "User Registered"}]
+                })
+            });
+        } 
+    });
+    
+        
+    
+});
+
 app.post("/login", (req, res) => {
     let query = `SELECT first_name, last_name, address 
     FROM Users 
     WHERE user_id = '${req.body.username}' 
-    AND password = '${req.body.password}'`
+    AND password = '${req.body.password}'`;
     db.query(query,
     (err, data, fields) => {
         if(err){
@@ -104,9 +136,7 @@ app.get("/search:uid/:cat", (req, res)=>{
              });
     
 });
-app.post("/register", (req, res) => {
-    db.query("INSERT INTO USERS")
-});
+
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, ()=> console.log(`server running on port ${PORT}`));
 
